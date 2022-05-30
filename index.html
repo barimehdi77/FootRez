@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FootRez</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/fa10758cd2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <script src="scripts/script.js"></script>
     <div class="nav-bar">
-      <div class="logo">
-        <img src="images/1337-logo-cropped.png" alt="" />
-      </div>
+      <img src="images/1337-logo-cropped.png" alt="" />
       <nav>
         <ul>
           <li>
@@ -20,6 +21,7 @@
           </li>
         </ul>
       </nav>
+      <i id="mode-toggle" class="fa-solid fa-circle-half-stroke fa-3x"></i>
     </div>
     <section class="main">
       <div class="container">
@@ -27,42 +29,25 @@
         <div class="dashboard">
           <div class="day">
             <h2>Tuesday</h2>
-            <div class="time-slot">
-              <h2>6PM - 7PM</h2>
-            </div>
-            <div class="time-slot">
-              <h2>7PM - 8PM</h2>
-            </div>
-            <div class="time-slot">
-              <h2>8PM - 8PM</h2>
-            </div>
+            <button class="time-slot">6PM - 7PM</button>
+            <button class="time-slot">7PM - 8PM</button>
+            <button class="time-slot">8PM - 8PM</button>
           </div>
-          <div class="day">
+          <div id="tuesday" class="day">
             <h2>Wednesday</h2>
-            <div class="time-slot">
-              <h2>6PM - 7PM</h2>
-            </div>
-            <div class="time-slot">
-              <h2>7PM - 8PM</h2>
-            </div>
-            <div class="time-slot">
-              <h2>8PM - 9PM</h2>
-            </div>
+            <button class="time-slot">6PM - 7PM</button>
+            <button class="time-slot">7PM - 8PM</button>
+            <button class="time-slot">8PM - 8PM</button>
           </div>
           <div class="day">
             <h2>Friday</h2>
-            <div class="time-slot">
-              <h2>6PM - 7PM</h2>
-            </div>
-            <div class="time-slot">
-              <h2>7PM - 8PM</h2>
-            </div>
-            <div class="time-slot">
-              <h2>8PM - 9PM</h2>
-            </div>
+            <button class="time-slot">6PM - 7PM</button>
+            <button class="time-slot">7PM - 8PM</button>
+            <button class="time-slot">8PM - 8PM</button>
           </div>
         </div>
       </div>
     </section>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
