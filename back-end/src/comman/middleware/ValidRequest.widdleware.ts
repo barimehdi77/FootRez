@@ -11,9 +11,9 @@ export class ValidRequestMiddleware implements NestMiddleware {
 		const Day = Week.find(day => {
 			return (day.DayName === req.body.DayName);
 		});
-		console.log(Day.TimeZone["First"]);
 		if (!Day)
 			throw new HttpException("You Can't reserve in This day", 400);
+		console.log(Day.TimeZone["First"]);
 		if (req.body.ReservedTime !== "First" && req.body.ReservedTime !== "Second" && req.body.ReservedTime !== "Third")
 			throw new HttpException("Reserved Time is Incorrect", 401);
 		if (Day)
@@ -36,13 +36,14 @@ export class ValidUnReserveMiddleware implements NestMiddleware {
 		if (!Day)
 				throw new HttpException("You Can't reserve in This day", 400);
 		console.log(Day.TimeZone["First"]);
+		console.log(req.body);
 		if (req.body.ReservedTime !== "First" && req.body.ReservedTime !== "Second" && req.body.ReservedTime !== "Third")
 			throw new HttpException("Reserved Time is Incorrect", 401);
 		if (Day)
 		{
 			if (Day.TimeZone[req.body.ReservedTime].isReserved == false)
 				throw new HttpException("TimeZone is Not reserved", 402);
-			if (Day.TimeZone[req.body.ReservedTime].reserver !== req.body.reserver)
+			if (Day.TimeZone[req.body.ReservedTime].reserver !== req.body.Reserver)
 				throw new HttpException("You can't unreserve on behalf of someone else", 403)
 		}
 		next();
