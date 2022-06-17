@@ -1,11 +1,12 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { ValidRequestMiddleware, ValidUnReserveMiddleware } from 'src/comman/middleware/ValidRequest.widdleware';
+import { RegisterModule } from 'src/register/register.module';
 import { TeamsModule } from 'src/teams/teams.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [ TeamsModule ],
+  imports: [ TeamsModule, RegisterModule ],
   controllers: [ AppController ],
   providers: [ AppService ]
 })
