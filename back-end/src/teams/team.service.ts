@@ -1,14 +1,19 @@
 import { Injectable } from "@nestjs/common";
-import { Teams } from "../db";
 import { TeamsResponseDto } from "./dto/teams.dto";
+import { PrismaClient } from "@prisma/client";
+// import { Teams } from "src/db";
 
+const prisma = new PrismaClient()
 
 
 @Injectable()
 export class TeamService {
-	private teams = Teams;
+	// private teams = Teams;
 
-	getTeams() : TeamsResponseDto[] {
+	async getTeams() : Promise<TeamsResponseDto[]> {
+		const teams = await prisma.teams.create({
+			select: prisma.teams
+		})
 		return (this.teams);
 	}
 
