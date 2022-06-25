@@ -10,10 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Team {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  players Player[]
 
-model Teams {
-  id Int @id @default(autoincrement())
-  teamName String @unique
-  teamPlayers String[]
-  TeamCaptin String
+  @@map(name: "team")
+}
+
+model Player {
+  id   Int     @id @default(autoincrement())
+  name String? @unique
+  age  Int
+
+  @@map(name: "player")
+  Team   Team? @relation(fields: [teamId], references: [id])
+  teamId Int?
 }

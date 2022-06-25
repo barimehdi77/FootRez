@@ -1,34 +1,50 @@
 import { Injectable } from "@nestjs/common";
+import { Prisma } from "@prisma/client";
+import { PrismaService } from "src/app/prisma.service";
 import { TeamsResponseDto } from "./dto/teams.dto";
-import { PrismaClient } from "@prisma/client";
 // import { Teams } from "src/db";
-
-const prisma = new PrismaClient()
-
 
 @Injectable()
 export class TeamService {
+	constructor (private prisma: PrismaService) {}
 	// private teams = Teams;
 
-	async getTeams() : Promise<TeamsResponseDto[]> {
-		const teams = await prisma.teams.create({
-			select: prisma.teams
-		})
-		return (this.teams);
+	getTeams() {
+		return (this.prisma.team.findMany({
+			include: {
+				players: {
+					select: {
+						name: true,
+						age: true,
+					}
+				}
+			}
+		}));
 	}
 
-	getTeamById(TeamId: number ) : TeamsResponseDto {
-		return (this.teams.find( team => {
-			return (team.TeamId == TeamId);
+	getTeamById(where: Prisma.TeamWhereUniqueInput ) {
+		return (this.prisma.team.findUnique({
+			where,
+			include: {
+				players: {
+					select: {
+						name: true,
+						age: true,
+					}
+				}
+			}
+		}));
+	}
+
+	CreateNewTeam(data: Prisma.TeamUncheckedCreateInput) {
+		return (this.prisma.team.create({
+			data,
+		}));
+	}
+
+	DeleteTeam ( where: Prisma.TeamWhereUniqueInput) {
+		return (this.prisma.team.delete({
+			where,
 		}))
-	}
-
-	CreateNewTeam(Team : TeamsResponseDto) : TeamsResponseDto {
-		let NewTeam = {
-			TeamId: Math.floor(100000 + Math.random() * 900000),
-			...Team
-		}
-		this.teams.push(NewTeam);
-		return (NewTeam);
 	}
 }

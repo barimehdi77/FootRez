@@ -133,3 +133,30 @@ export let Teams = [
 		TeamCaptin: "Marco Reus",
 	},
 ]
+
+
+
+/*
+"players": [
+        {
+            "name": "Karim Benzema",
+            "age": 34
+        },
+        {
+            "name": "Toni Kroos",
+            "age": 32
+        },
+        {
+            "name": "Luka Modric",
+            "age": 36
+        },
+        {
+            "name": "Vini Jr",
+            "age": 21
+        },
+        {
+            "name": "Eden Hazard",
+            "age": 30
+        }
+    ]
+*/
