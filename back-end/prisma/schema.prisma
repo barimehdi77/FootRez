@@ -15,15 +15,36 @@ model Team {
   name    String   @unique
   players Player[]
 
+  TimeZone TimeZone[]
   @@map(name: "team")
 }
 
 model Player {
-  id   Int     @id @default(autoincrement())
-  name String? @unique
+  id   Int    @id @default(autoincrement())
+  name String @unique
   age  Int
 
-  @@map(name: "player")
   Team   Team? @relation(fields: [teamId], references: [id])
   teamId Int?
+  @@map(name: "player")
+}
+
+model TimeZone {
+
+  id         String  @id @unique
+  isReserved Boolean @default(false)
+  reserver   Team    @relation(fields: [teamId], references: [id])
+
+  teamId Int
+  @@map(name: "timezone")
+  Week   Week? @relation(fields: [weekId], references: [id])
+  weekId Int?
+}
+
+model Week {
+
+  id       Int        @id @default(autoincrement())
+  DayName  String
+  timeZone TimeZone[]
+  @@map(name: "week")
 }
