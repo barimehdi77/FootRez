@@ -1,4 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import { PassportModule } from '@nestjs/passport';
 import { AuthModule } from '../auth/auth.module';
 import { ValidRequestMiddleware, ValidUnReserveMiddleware } from '../comman/middleware/ValidRequest.widdleware';
 import { PlayersModule } from '../players/players.module';
@@ -8,7 +9,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [ TeamsModule, RegisterModule, PlayersModule, AuthModule ],
+  imports: [
+    TeamsModule,
+    RegisterModule,
+    PlayersModule,
+    AuthModule,
+    PassportModule.register({session: true}),
+  ],
   controllers: [ AppController ],
   providers: [ AppService ]
 })
