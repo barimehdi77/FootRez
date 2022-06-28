@@ -11,7 +11,7 @@ export class AppController {
 	getWeek() : WeekResponseDto[] {
 		return (this.appservice.getWeek());
 	}
-	@Put('/')
+	@Put()
 	reserveTime(
 		@Body() data: ReservaitonRequestDro
 	) : WeekResponseDto {

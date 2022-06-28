@@ -36,9 +36,9 @@ model TimeZone {
   reserver   Team    @relation(fields: [teamId], references: [id])
 
   teamId Int
-  @@map(name: "timezone")
   Week   Week? @relation(fields: [weekId], references: [id])
   weekId Int?
+  @@map(name: "timezone")
 }
 
 model Week {
@@ -47,4 +47,14 @@ model Week {
   DayName  String
   timeZone TimeZone[]
   @@map(name: "week")
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  FirstName String
+  LastName  String
+  UserName  String @unique
+  Email     String @unique
+
+  @@map(name: "user")
 }
