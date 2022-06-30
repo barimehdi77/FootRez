@@ -7,7 +7,7 @@ function lightMode() {
 	document.body.classList.toggle('lightmode');
 }
 
-function Nav() {
+function Navbar() {
 	return (
 		<>
 			<Head>
@@ -39,4 +39,4 @@ function Nav() {
 	);
 }
 
-export default Nav;
+export default Navbar;

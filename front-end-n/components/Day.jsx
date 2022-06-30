@@ -1,5 +1,5 @@
 import styles from '../styles/day.module.css'
-import TimeSlot from "./timeSlot";
+import TimeSlot from "./TimeSlot";
 
 function Day(props) {
 	return (
