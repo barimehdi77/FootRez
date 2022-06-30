@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import styles from '../styles/index.module.css'
+
 import Nav from '../components/nav';
 import Day from '../components/day';
 
@@ -8,11 +10,11 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<Nav />
-			<section className='main'>
-				<div className='container'>
-					<h1>reserve an available time slot</h1>
-					<div className='underline'></div>
-					<div className='dashboard'>
+			<section className={styles.main}>
+				<div className={styles.container}>
+					<h1 className={styles.title}>reserve an available time slot</h1>
+					<div className={styles.underline}></div>
+					<div className={styles.dashboard}>
 						<Day day='tuesday' />
 						<Day day='wednesday' />
 						<Day day='friday' />

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import logoPic from '../public/1337-logo-cropped.png';
+import styles from '../styles/nav.module.css';
 
 function lightMode() {
 	document.body.classList.toggle('lightmode');
@@ -15,14 +16,13 @@ function Nav() {
 					crossorigin='anonymous'
 				></script>
 			</Head>
-			<div className='nav-bar'>
-				<Image src={logoPic} alt='1337 Logo' className='image'/>
-				{/* <img src={logo} alt='1337 Logo' /> */}
+			<div className={styles.navBar}>
+				<Image src={logoPic} alt='1337 Logo' className={styles.logo} />
 				<nav>
-					<ul>
-						<li>
-							<a href='#'>
-								Foot<span>Rez</span>
+					<ul style={{ listStyle: 'none' }}>
+						<li style={{ padding: '1rem 0' }}>
+							<a href='#' className={styles.footrezLogo}>
+								Foot<span style={{ color: 'var(--primary-blue)' }}>Rez</span>
 							</a>
 						</li>
 					</ul>
@@ -30,7 +30,9 @@ function Nav() {
 				<i
 					onClick={lightMode}
 					id='mode-toggle'
-					className='fa-solid fa-circle-half-stroke fa-3x'
+					className={
+						styles.darkModeIcon + ' ' + 'fa-solid fa-circle-half-stroke fa-3x'
+					}
 				></i>
 			</div>
 		</>

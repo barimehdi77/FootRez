@@ -1,0 +1,43 @@
+.title {
+	color: var(--heading);
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 3rem;
+	letter-spacing: 3px;
+	margin: 10rem 2rem 1rem 2rem;
+}
+
+.underline {
+	width: 30%;
+	height: 0.5rem;
+	margin: auto;
+	background-color: var(--primary-blue);
+}
+
+.main {
+	text-align: center;
+	min-height: 100vh;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+.dashboard {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	font-size: 2rem;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-top: 5rem;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,33 @@
+.navBar {
+	background-color: var(--nav-clr);
+	position: fixed;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	width: 100%;
+	-webkit-box-shadow: 0 5px 20px var(--box-shadow);
+	box-shadow: 0 5px 20px var(--box-shadow);
+}
+
+.logo {
+	width: 8rem;
+	margin-left: 8rem;
+}
+
+.footrezLogo {
+	text-decoration: none;
+	color: var(--white);
+	font-size: 3rem;
+	font-weight: 800;
+}
+
+.darkModeIcon {
+	margin-right: 12rem;
+	cursor: pointer;
+}
