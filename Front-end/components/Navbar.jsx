@@ -17,7 +17,8 @@ function Navbar() {
 				></script>
 			</Head>
 			<div className={styles.navBar}>
-				<Image src={logoPic} alt='1337 Logo' className={styles.logo} />
+				<img src="/1337-logo-cropped.png" alt="1337 Logo" className={styles.logo} />
+				{/* <Image src={logoPic} alt='1337 Logo' className={styles.logo} /> */}
 				<nav>
 					<ul style={{ listStyle: 'none' }}>
 						<li style={{ padding: '1rem 0' }}>
