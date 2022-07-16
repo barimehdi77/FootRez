@@ -15,6 +15,10 @@ ls:
 	@docker images
 	@echo "$(YELLOW)██████████████████████ ALL CONTAINERS ███████████████████████$(RESET)"
 	@docker ps -a
+	@echo "$(BLUE)██████████████████████ ALL NETWORKS ███████████████████████$(RESET)"
+	@docker network ls
+	@echo "$(RED)██████████████████████ ALL VOLUMES ███████████████████████$(RESET)"
+	@docker volume ls
 
 build:
 	@echo "$(BLUE)██████████████████████ Building Images ███████████████████████$(RESET)"
