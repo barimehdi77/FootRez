@@ -9,7 +9,7 @@ export class PlayersService {
 
   constructor (private prisma: PrismaService) {};
 
-  create(data: Prisma.PlayerCreateInput) {
+  create(data: Prisma.PlayerUncheckedCreateInput) {
     return this.prisma.player.create({
       data,
     });

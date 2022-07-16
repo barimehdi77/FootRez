@@ -9,7 +9,7 @@ export class PlayersController {
   constructor(private readonly playersService: PlayersService) {}
 
   @Post()
-  create(@Body() data: Prisma.PlayerCreateInput) {
+  create(@Body() data: Prisma.PlayerUncheckedCreateInput) {
     return this.playersService.create(data);
   }
 
