@@ -51,6 +51,7 @@ model Week {
 
 model User {
   id        Int    @id @default(autoincrement())
+  intra_id  Int     @unique @default(0)
   first_name String
   last_name  String
   login      String @unique

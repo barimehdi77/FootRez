@@ -24,11 +24,11 @@ export class FortyTwoStrategy extends PassportStrategy(Strategy) {
 
 	async validate(accessToken: string, refreshToken: string, profile: Profile, done: any)
 	{
-		const { login, first_name, last_name, image_url, email } = profile._json;
+		const { login, first_name, last_name, image_url, email, id: intra_id } = profile._json;
 
-		const NewUser: Prisma.UserUncheckedCreateInput = { login, first_name, last_name, image_url, email };
+		const NewUser: Prisma.UserUncheckedCreateInput = { login, first_name, last_name, image_url, email, intra_id };
 		// console.log(NewUser);
 		// console.log(profile);
-		await this.userService.validateUser(NewUser);
+		return  this.userService.validateUser(NewUser);
 	}
 }

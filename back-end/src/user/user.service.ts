@@ -1,22 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
-import { PrismaService } from 'src/app/prisma.service';
+import { Prisma, User } from '@prisma/client';
+import { PrismaService } from '../app/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
-  constructor( private prisma: PrismaService) { }
+  constructor( private readonly prisma: PrismaService) { }
 
   async validateUser(data: Prisma.UserUncheckedCreateInput) {
     // const { login } = data;
     const user = await this.prisma.user.findUnique({
       where: {
-        login: data.login,
+        intra_id: data.intra_id,
       }
     });
     if (user) return user;
     return this.create(data);
+  }
+
+  async FindUser(where: number): Promise<Prisma.UserUncheckedCreateInput | undefined> {
+    return (this.findOne({intra_id: +where}));
   }
 
   create(data: Prisma.UserUncheckedCreateInput) {

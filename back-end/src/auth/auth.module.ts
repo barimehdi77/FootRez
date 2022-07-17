@@ -4,9 +4,10 @@ import { AuthController } from './auth.controller';
 import { FortyTwoStrategy } from './auth.strategies';
 import { UserService } from 'src/user/user.service';
 import { PrismaService } from 'src/app/prisma.service';
+import { SessionSerializer } from './auth.serializer';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, FortyTwoStrategy, UserService, PrismaService],
+  providers: [AuthService, FortyTwoStrategy, UserService, PrismaService, SessionSerializer],
 })
 export class AuthModule {}
