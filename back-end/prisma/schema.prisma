@@ -55,6 +55,7 @@ model User {
   LastName  String
   UserName  String @unique
   Email     String @unique
+  ProfileDone Boolean @default(false)
 
   @@map(name: "user")
 }
