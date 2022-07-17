@@ -2,13 +2,15 @@ import { Strategy, profile } from "passport-42";
 import { PassportStrategy } from "@nestjs/passport";
 import { Injectable } from "@nestjs/common";
 import { expand } from "rxjs";
-import { Profile } from "passport";
+import { Profile } from "passport-42";
 import { ValidationDecoratorOptions } from "class-validator";
+import { UserService } from "src/user/user.service";
+import { Prisma } from "@prisma/client";
 
 
 @Injectable()
 export class FortyTwoStrategy extends PassportStrategy(Strategy) {
-	constructor() {
+	constructor(private readonly userService : UserService) {
 		super(
 			{
 				clientID: process.env.FORTYTWO_CLIENT_ID,
@@ -22,8 +24,11 @@ export class FortyTwoStrategy extends PassportStrategy(Strategy) {
 
 	async validate(accessToken: string, refreshToken: string, profile: Profile, done: any)
 	{
-		const { username, displayName, provider } = profile;
-		console.log(accessToken);
-		console.log(refreshToken);
+		const { login, first_name, last_name, image_url, email } = profile._json;
+
+		const NewUser: Prisma.UserUncheckedCreateInput = { login, first_name, last_name, image_url, email };
+		// console.log(NewUser);
+		// console.log(profile);
+		await this.userService.validateUser(NewUser);
 	}
 }

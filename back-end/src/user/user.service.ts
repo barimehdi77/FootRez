@@ -8,7 +8,19 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserService {
   constructor( private prisma: PrismaService) { }
 
+  async validateUser(data: Prisma.UserUncheckedCreateInput) {
+    // const { login } = data;
+    const user = await this.prisma.user.findUnique({
+      where: {
+        login: data.login,
+      }
+    });
+    if (user) return user;
+    return this.create(data);
+  }
+
   create(data: Prisma.UserUncheckedCreateInput) {
+    console.log("The Create function is called");
     return (this.prisma.user.create({
       data,
     }))
@@ -17,10 +29,12 @@ export class UserService {
   findAll() {
     return (this.prisma.user.findMany({
       select: {
-        FirstName: true,
-        LastName: true,
-        UserName: true,
-        Email: true,
+        first_name: true,
+        last_name: true,
+        user_name: true,
+        email: true,
+        login: true,
+        image_url: true,
       }
     }));
   }
@@ -29,10 +43,12 @@ export class UserService {
     return (this.prisma.user.findUnique({
       where,
       select: {
-        FirstName: true,
-        LastName: true,
-        UserName: true,
-        Email: true,
+        first_name: true,
+        last_name: true,
+        user_name: true,
+        email: true,
+        login: true,
+        image_url: true,
       }
     }));
   }
