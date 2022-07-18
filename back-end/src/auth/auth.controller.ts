@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { Response } from 'express';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
-import { FortyTwoAuthGuard } from './auth.guards';
+import { AuthenticatedGuard, FortyTwoAuthGuard } from './auth.guards';
 
 @Controller('auth')
 export class AuthController {
@@ -36,8 +36,9 @@ export class AuthController {
    * This will Retrieve the auth status
    */
   @Get('status')
+  @UseGuards(AuthenticatedGuard)
   status() {
-
+    return ('You are authenticated');
   }
 
   /**
