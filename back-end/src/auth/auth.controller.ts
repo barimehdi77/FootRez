@@ -27,7 +27,7 @@ export class AuthController {
   @Get('redirect')
   @UseGuards(FortyTwoAuthGuard)
   redirect(@Req() req: any ,@Res() res: Response) {
-    // console.log(req);
+    console.log(req);
     res.send(200);
   }
 

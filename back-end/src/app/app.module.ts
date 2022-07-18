@@ -8,9 +8,13 @@ import { RegisterModule } from '../register/register.module';
 import { TeamsModule } from '../teams/teams.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TeamsModule,
     RegisterModule,
     PlayersModule,
