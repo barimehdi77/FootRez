@@ -1,9 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Res, UseGuards, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
-import { AuthenticatedGuard, FortyTwoAuthGuard } from './auth.guards';
+// import { AuthenticatedGuard } from './auth.guards';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -14,7 +15,7 @@ export class AuthController {
    * This is the route the user will visit to authenticate
    */
   @Get('login')
-  @UseGuards(FortyTwoAuthGuard)
+  @UseGuards(AuthGuard('42'))
   login() {
     return ;
   }
@@ -25,10 +26,10 @@ export class AuthController {
    */
 
   @Get('redirect')
-  @UseGuards(FortyTwoAuthGuard)
+  @UseGuards(AuthGuard('42'))
   redirect(@Req() req: any ,@Res() res: Response) {
     console.log(req);
-    res.send(200);
+    res.redirect('http://localhost:3000/api/auth/status');
   }
 
   /**
@@ -36,8 +37,10 @@ export class AuthController {
    * This will Retrieve the auth status
    */
   @Get('status')
-  @UseGuards(AuthenticatedGuard)
-  status() {
+  // @UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthGuard('jwt'))
+  status(@Req() req: Request) {
+    console.log(req);
     return ('You are authenticated');
   }
 

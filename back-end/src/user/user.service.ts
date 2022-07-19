@@ -37,7 +37,10 @@ export class UserService {
         intra_id: data.intra_id,
       },
     });
-    if (user) return user;
+    if (user) {
+      const token = await this.signToken(user.intra_id, user.email, user.login);
+      return (token);
+    }
     return this.create(data);
   }
 
@@ -53,7 +56,8 @@ export class UserService {
       data,
     });
 
-    return (this.signToken(user.id, user.email, user.login));
+    const token = await this.signToken(user.intra_id, user.email, user.login);
+    return (token);
   }
 
   findAll() {
@@ -70,6 +74,7 @@ export class UserService {
   }
 
   findOne(where: Prisma.UserWhereUniqueInput) {
+    console.log(where);
     return this.prisma.user.findUnique({
       where,
       select: {

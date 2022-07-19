@@ -29,6 +29,8 @@ export class FortyTwoStrategy extends PassportStrategy(Strategy) {
 		const NewUser: Prisma.UserUncheckedCreateInput = { login, first_name, last_name, image_url, email, intra_id };
 		// console.log(NewUser);
 		// console.log(profile);
-		return  this.userService.validateUser(NewUser);
+		return {
+			"access_token": await this.userService.validateUser(NewUser),
+		};
 	}
 }

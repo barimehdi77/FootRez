@@ -4,7 +4,7 @@ import { AuthController } from './auth.controller';
 import { FortyTwoStrategy } from 'src/strategies/FortyTwo.strategy';
 import { UserService } from 'src/user/user.service';
 import { PrismaService } from 'src/app/prisma.service';
-import { SessionSerializer } from './auth.serializer';
+// import { SessionSerializer } from './auth.serializer';
 import { JwtStrategy } from 'src/strategies/jwt.strategy';
 import { ConfigService } from '@nestjs/config'
 import { JwtModule } from '@nestjs/jwt';
@@ -14,6 +14,6 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule.register({})
 ],
   controllers: [AuthController],
-  providers: [AuthService, FortyTwoStrategy, UserService, PrismaService, SessionSerializer, ConfigService],
+  providers: [AuthService, FortyTwoStrategy, JwtStrategy, UserService, PrismaService, ConfigService],
 })
 export class AuthModule {}
