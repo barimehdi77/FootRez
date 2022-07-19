@@ -29,6 +29,7 @@ export class AuthController {
   @UseGuards(AuthGuard('42'))
   redirect(@Req() req: any ,@Res() res: Response) {
     console.log(req);
+    res.cookie('access_token', req.user.access_token);
     res.redirect('http://localhost:3000/api/auth/status');
   }
 
